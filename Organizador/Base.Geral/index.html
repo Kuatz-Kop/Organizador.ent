@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyOrg</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <h1 id="titulo">Organizador de projetos</h1>
+    <div id="kitPesquisa">
+        <form>
+            <label for=""></label>
+            <input type="text" name="=filtro" id="filtro">
+        </form>
+            <button onclick="filtrar(event)" id="botaoPesquisa">></button>
+    </div>
+    <div id="lista"></div>
+    <script>
+        const User=prompt('User:');
+        if(User==='KoP'){
+        const Projetos=[
+            ['Clicker', 'Um jogo de clicker focado em história e progressão irregular', 'Jogo', 'HTML, CSS, JS', 4, 'Pausado', '0.0'],
+            ['RPG Wiki', 'Um site para mestres e jogadores de RPGs poderem interagir e compartilhar campanhas e personagens', 'Rede Social', 'HTML, CSS, JS', 1, 'Pausado', '0.0'],
+            ['Organizador', 'Site para organizar projetos', 'Utilidades', 'HTML, CSS, JS', 3, 'Em andamento', '0.0'],
+            ['Clique&Leva', 'Site para efetuar pagamentos de pequenas compras', 'Utilidades', 'HTML, CSS, JS', 4, 'Em andamento', '0.0'],
+
+        ]
+
+        const lista=document.getElementById('lista');
+
+        function filtrar(event){
+            if (event){event.defaultPrevented};
+
+            const filtro=document.getElementById('filtro').value.trim().toLowerCase();
+
+            let itensFiltrados=[];
+
+            lista.innerHTML='';
+
+            if(filtro!==''){
+                itensFiltrados=Projetos.filter((Projeto)=>Projeto[0].toLowerCase()===filtro || Projeto[2].toLowerCase()===filtro || Projeto[4]===Number(filtro) || Projeto[5].toLowerCase()===filtro);
+            }else{
+                itensFiltrados=Projetos;
+            }
+
+            if(itensFiltrados.length===0){
+                lista.innerHTML=`<p id="erroFiltro">Não há Pojetos compatíveis com sua busca</p>`
+            }
+
+
+
+            itensFiltrados.forEach((projeto)=>{
+                const card=document.createElement('div');
+                card.classList.add('card');
+
+                const nome=document.createElement('h2');
+                nome.innerHTML=projeto[0];
+
+                const descricao=document.createElement('p');
+                descricao.innerHTML=projeto[1];
+
+                const categoria=document.createElement('span');
+                categoria.innerHTML=projeto[2];
+
+                const linguagens=document.createElement('span');
+                linguagens.innerHTML=projeto[3];
+
+                const prioridade=document.createElement('span');
+                prioridade.innerHTML='PRIORIDADE: ' + projeto[4];
+
+                const status=document.createElement('h3');
+                status.innerHTML=projeto[5];
+
+                const versao=document.createElement('h4');
+                versao.innerHTML='V ' + projeto[6];
+
+
+                card.append(nome);
+                card.append(descricao);
+                card.append(categoria);
+                card.append(linguagens);
+                card.append(prioridade);
+                card.append(status);
+                card.append(versao);
+
+                lista.append(card);
+            });
+        }
+        
+        filtrar();
+        }
+    </script>
+</body>
+</html>

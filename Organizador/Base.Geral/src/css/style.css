@@ -1,0 +1,40 @@
+body{
+    background-color: black;
+    color: cyan;
+}
+#titulo{
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+}
+#kitPesquisa{
+    display: flex;
+    padding-left: 30px;
+}
+#filtro{
+    background-color: darkblue;
+    color: aliceblue;
+    width: 450px;
+    height: 20px;
+}
+#botaoPesquisa{
+    background-color: cyan;
+    border-radius: 999px;
+}
+#lista{
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    color: aliceblue;
+    border: 3px solid cyan;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 15%;
+    max-height: 500px;
+    padding: 15px;
+    padding-top: 20px;
+    margin: 30px;
+}
